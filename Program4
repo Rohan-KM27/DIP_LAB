@@ -1,0 +1,13 @@
+import cv2
+
+img = cv2.imread('DIP/image.jpg', cv2.IMREAD_GRAYSCALE)
+
+blurred = cv2.GaussianBlur(img, (5, 5), 0)
+
+ edges = cv2.Canny(blurred, 100, 200)
+
+laplacian = cv2.Laplacian(blurred, cv2.CV_64F)
+
+
+kernel = cv2.getGaborKernel((10, 10), 3, 0, 10, 0.5, 0, ktype=cv2.CV_32F) gabor = cv2.filter2D(img, cv2.CV_8UC3, kernel)
+
